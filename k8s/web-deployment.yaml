@@ -1,24 +1,24 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: payment
+  name: sample-app
   labels:
-    app: payment
+    app: sample-app
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: payment
+      app: sample-app
   template:
     metadata:
       labels:
-        app: payment
+        app: sample-app
     spec:
       containers:
-        - name: payment
-          image: public.ecr.aws/y5u7j3p0/payment:latest
+        - name: sample-app
+          image: public.ecr.aws/y5u7j3p0/sample-app
           ports:
-            - containerPort: 5005
+            - containerPort: 5000
           envFrom:
             - secretRef:
                 name: mongo-secret
